@@ -1,0 +1,45 @@
+version: "4.0"
+
+networks:
+  dev:
+
+services:
+  linkshortener_web:
+    depends_on:
+      - "linkshortener_api"
+    container_name: linkshortener_web
+    build:
+      context: LinkShortener
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - dev
+
+  linkshortener_api:
+    # image: docker.io/library/dataapi
+    depends_on:
+      - "linkshortener_db"
+    container_name: linkshortener_api
+    ports:
+      - "8080:8080"
+    build:
+      context: LinkShortener.API
+      dockerfile: ./LinkShortener.API/Dockerfile
+    environment:
+      - ConnectionStrings__Postgres=Host=localhost;User ID=postgres;Password=postgres;Server=linkshortener_db;Port=5432;Database=LinkShortnerDb
+      # ;IntegratedSecurity=true;Pooling=true;
+      # Host=localhost;User ID=postgres;Password=mysecretpassword;Database=LinkShortnerDb;Port=5432
+    networks:
+      - dev
+  linkshortener_db:
+    image: postgres:latest
+    container_name: linkshortener_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=SampleDbDriver
+    ports:
+      - "5432:5432"
+    networks:
+      - dev
