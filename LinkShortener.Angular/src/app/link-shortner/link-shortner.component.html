@@ -1,0 +1,8 @@
+<img src="HeaderLogo.png" alt="" class="header-img">
+<form action="" (ngSubmit)="onLinkSubmit()">
+    <input name='url' type="text" class="form-input" placeholder="Type your url" [(ngModel)]="url">
+    <button class="form-button" type="submit">Shorten my url</button>
+</form>
+@if(shortenedUrl()){
+<p class="header-text">{{'Your shortened URL: ' + shortenedUrl()}}</p>
+}

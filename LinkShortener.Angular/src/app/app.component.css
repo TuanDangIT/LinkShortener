@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  justify-content: center;
+  width: 90vw;
+}
+
+@media (min-width: 600px) {
+  .header {
+    width: 60vw;
+  }
+}
+@media (min-width: 900px) {
+  .header {
+    width: 40vw;
+  }
+}
+@media (min-width: 1200px) {
+  .header {
+    width: 30vw;
+  }
+}
+@media (min-width: 2000px) {
+  .header {
+    width: auto;
+  }
+}
