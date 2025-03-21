@@ -4,5 +4,5 @@ First basic application using C# Web API and Angular together.
 
 ![LinkShortener logo](/assets/HeaderLogo.png)
 
-# UI
+# Website UI 
 ![LinkShortener UI](/assets/website_picture.png)
